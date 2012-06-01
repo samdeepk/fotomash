@@ -1,0 +1,585 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul,li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	background: transparent;
+	border: 0;
+	margin: 0;
+	padding: 0;
+	vertical-align: baseline;
+}
+body {
+	line-height: 1;
+	font-family:'Verdana', arial, tahoma;
+}
+h1, h2, h3, h4, h5, h6 {
+	clear: both;
+	font-weight: normal;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote {
+	quotes: none;
+}
+blockquote:before, blockquote:after {
+	content: '';
+	content: none;
+}
+del {
+	text-decoration: line-through;
+}
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a img {
+	border: none;
+}
+/********************************* layout starts from here for home page ****************************/
+.Headerbar
+{
+	background-color:#f9f9f9;
+	border-top:5px solid #f42792;
+	padding:15px 0px;
+	height:61px;
+	border-bottom:1px solid #dcdcdc;
+}
+.ContWrap
+{
+	width:980px;
+	margin:auto;
+	clear:both;
+	overflow:auto;
+}
+.LogoSec
+{
+	width:218px;
+	height:61px;
+	float:left;
+}
+.HomeLogin
+{
+	float:right;
+	padding-top:15px;
+}
+.LoginLink a
+{
+	color:black;
+	text-decoration:underline;
+	font-size:10px;
+}
+.LoginLink a:hover
+{
+	color:black;
+	text-decoration:none;
+}
+.HomeLogin span
+{
+	color:black;
+	font-size:10px;
+	float:right;
+	margin:0px 5px;
+}
+.GuestName
+{
+	font-size:12px;
+	color:#f42792;
+	text-align:right;
+	width:100%;
+	margin-bottom:10px;
+}
+.GuestName span
+{
+	font-weight:bold !important;
+}
+.HomeCenBg
+{
+	background:url(/static/images/HomeHeroBg.png) center center repeat;
+	min-height:350px;
+	padding-top:35px;
+}
+.innerbg
+{
+background:none !important;
+overflow:auto;
+}
+.HomeBtmSlider
+{
+	background-color:#eeeeee;
+	border-top:5px solid #d1d1d1;
+	border-bottom:5px solid #d1d1d1;
+	padding:15px 0px 15px 0px;
+}
+.HomeHero
+{
+	background:url(/static/images/hero-graphic.png) no-repeat;
+	width:490px;
+	height:325px;
+	float:left;
+}
+.HmSrchArea
+{
+	float:right;
+	width:400px;
+	margin-top:30px;
+	
+	float: right;
+	width: 400px;
+	margin-top: 30px;
+	position: relative;
+	right: 0;
+	top: 20%;
+	
+	
+}
+
+
+
+.HmMnSrcBlc
+{
+	background:url(/static/images/HmSrcBg.png) repeat-x ;
+	height:65px;
+	width:90%;/*370px;*/
+	padding:15px;
+}
+.HmSrchAreaInTop {
+position: absolute;
+top: -18px;
+left: 491px;
+width: 600px;
+padding:0px !important;
+}
+.HmSrchAreaInTop  .HmMnSrcBlc
+{
+	background:none !important;
+	color:black;
+}
+.HmSrchAreaInTop  div a
+{
+	coloe:black !important;
+}
+
+.SrcBxCont
+{
+	margin-bottom:5px;
+	clear:both;
+	height:45px;
+}
+.SrcBx
+{
+	float:left;
+	background-color:white;
+	border:none;
+	padding:8px;
+	font-size:20px;
+	color:black;
+	width:85%;/*315px;*/
+}
+.SrchBtn
+{
+	width: 31px;
+	height: 40px;
+	float: left;
+	margin: 0 0 0 10px;
+
+}
+.AdvSrchHM
+{
+	font-size:14px;
+	color:white;
+}
+.AddKeyword
+{
+	font-size:11px;
+	color:white;
+	float:right;
+}
+.AddKeyword input
+{
+	float:left;
+}
+.AddKeyword p
+{
+	float:left;
+	padding-top:3px;
+	padding-bottom: 5px;
+	color: black;
+}
+.AdvSrchHM a
+{
+	font-size:12px;
+	color:white;
+	font-weight:bold;
+	text-decoration:underline;
+}
+.AdvSrchHM a:hover
+{
+	color:white;
+	text-decoration:none;
+}
+.AdvSrchOptions
+{
+	width:360px;
+	height:110px;
+	padding:35px 20px 20px 20px;
+	background:url(/static/images/AdvSrcBg.png) no-repeat;
+	margin-top:-20px;
+	clear:both;
+	display:none;
+}
+.SrcOpt
+{
+	float:left;
+	width:210px;
+}
+.SrcOpt ul li
+{
+	width:95px;
+	margin-right:10px;
+	float:left;
+	color:gray;
+	font-size:11px;
+	height:22px;
+}
+.SrcOpt ul li input
+{
+	padding:0px;
+	margin-right:5px;
+	float:left;
+}
+.AdvSrcDivider
+{
+	width:1px;
+	float:left;
+	height:110px;
+	background-color:#f5f5f5;
+	margin-right:10px;
+}
+.SrcCategory
+{
+	width:130px;
+	font-size:11px;
+	font-weight:bold;
+	color:gray;
+	float:left;
+}
+.SrcCategory td
+{
+	padding:0px 0px 5px 0px;
+}
+.SrcCategory select
+{
+	font-size:11px;
+	font-weight:normal;
+	border:1px solid #CCC;
+	padding:2px;
+	color:gray;
+	width:140px;
+}
+.LoginPop
+{
+	width:360px;
+	height:195px;
+	padding:35px 20px 20px 20px;
+	background:url(/static/images/LoginBG.png) no-repeat;
+	clear:both;
+	position:absolute;
+	margin-left:-180px;
+	margin-top:-10px;
+	display: none;
+}
+.LoginPopLink
+{
+	clear:both;
+	text-align:left;
+	height:30px;
+}
+.LoginPopLink a
+{
+	padding:5px 0px;
+	font-size:10px;
+	color:#000;
+	text-decoration:underline;
+	float:left;
+}
+.LoginPopLink a:hover
+{
+	color:#000;
+	text-decoration:none;	
+}
+.LoginPop h1
+{
+	font-size:14px;
+	font-weight:bold;
+	color:#f42792;
+	margin-bottom:5px;
+}
+.LoginPop p
+{
+	font-size:11px;
+	font-weight:normal;
+	color:#000;
+	margin-bottom:10px;
+	clear:both;
+}
+.LoginHead
+{
+	font-size:11px;
+	font-weight:bold;
+	color:#454545;
+	margin-bottom:10px;
+	padding-bottom:5px;
+}
+.LoginTxt
+{
+	border:1px solid #CCC;
+	color:#454545;
+	font-size:11px;
+	width:136px;
+	padding:2px;
+}
+.LoginBtn
+{
+	font-size:12px;
+	font-weight:normal;
+	color:white;
+	background-color:#f42792;
+	padding:3px 10px;
+	border:none;
+}
+.SignupMsg
+{
+	font-size:12px;
+	color:black;
+	font-weight:bold;
+	margin-top:18px;
+}
+.SignupMsg a
+{
+	font-size:12px;
+	color:#fe5187;
+	text-decoration:none;
+}
+.SignupMsg a:hover
+{
+	color:#fe5187;
+	text-decoration:underline;
+}
+.FadeBG
+{
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0px;
+	left:0px;
+	background:url(/static/images/pattern.png);
+	z-index:999;
+}
+.ImageViewer
+{
+	width:940px;
+	height:500px;
+	margin:auto;
+	background-color:black;
+	margin-top:90px;
+}
+.CloseBtn
+{
+	float:right;
+	font-size:14px;
+	font-weight:bold;
+	color:white;
+	border:none;
+	margin-top:5px;
+	background:none;
+}
+.ImageDetails
+{
+	clear:both;
+	overflow:auto;
+	padding:0px 20px;
+}
+.BigImg
+{
+	width:675px;
+	height:450px;
+	float:left;
+	background-color:white;
+	text-align:left;
+	vertical-align:top;
+}
+.ImageDescription
+{
+	float:right;
+	width: 210px;
+	height:410px;
+	padding-top:40px;
+}
+.ImgTagHead
+{
+	font-size:11px;
+	font-weight:bold;
+	margin-bottom:5px;
+	color:white;
+}
+.TagDetails
+{
+	font-size:11px;
+	font-weight:normal;
+	margin-bottom:25px;
+	color:white;
+}
+.ImageDescription a
+{
+	font-size:11px;
+	text-decoration:underline;
+	color:#fa548c;
+}
+.ImageDescription a:hover
+{
+	font-size:11px;
+	text-decoration:none;
+	color:#fa548c;
+}
+.RsltSrch
+{
+	background:url(/static/images/InnerSrcBg.png) repeat-x;
+	height:89px;	
+}
+.InnSrcBlc
+{
+	width:980px;
+	margin:auto;
+	clear:both;
+	padding:10px 0px;
+}
+.InnSrcLft
+{
+	float:left;
+	width:365px;
+	margin-left:100px;
+}
+.SrcRstDis
+{
+	margin:auto auto 10px auto;
+	padding:20px 0px;
+	overflow:auto;
+	display:none;
+	border-bottom:5px solid #d1d1d1;
+}
+.ShowMore
+{
+	text-align:center;
+	color:black;
+	font-weight:bold;
+	font-size:14px;
+	clear:both;
+	margin-top:10px;
+}
+.ShowMore a
+{
+	color:black;
+	text-decoration:none;
+	display:block;
+	cursor:pointer;
+}
+.ShowMore a:hover
+{
+	color:black;
+	text-decoration:underline;
+}
+
+.result {
+	background:none;
+	margin:auto;
+	width:980px;
+}
+.noBG{background: none;}
+.result div img {
+	clear:both;
+	margin:5px 5px 10px 5px;
+	background-color:#fff;
+	cursor:pointer;
+	width:auto;
+	height:100px;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+}
+.result div {
+	float:left;
+	border:1px solid gray;
+	cursor:pointer;
+	min-width:165px;
+	height:auto;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	margin-right:10px;
+	text-align:center;
+	font-family:'verdana',Arial, Helvetica, sans-serif;
+	font-size:11px;
+	margin-right:14px;
+	margin-bottom:15px;
+	color:black;
+	background-color:white;
+	padding:5px;
+}
+.result a
+{
+	color:black;
+	text-decoration:none;
+}
+.result a:hover
+{
+	color:#f42792;
+	text-decoration:none;
+}
+.Footer
+{
+	margin:5px auto auto auto;
+	width:980px;
+	clear:both;
+	font-size:10px;
+	color:#999;
+	padding-bottom:5px;
+	overflow:auto;
+}
+.Copyrights
+{
+	float:left;
+}
+.Copyrights p
+{
+	padding-top:5px;
+	color:#fe5186;
+	font-weight:bold;
+}
+.Footer a
+{
+	color:#999;
+	text-decoration:none;
+	font-size:10px;
+}
+.Footer a:hover
+{
+	color:#999;
+	text-decoration:underline;
+	
+}
+.Social
+{
+	float:right;
+	margin-left:5px;
+}
+.Social img
+{
+	float:right;
+	margin-left:5px;
+	margin-top:4px;
+}

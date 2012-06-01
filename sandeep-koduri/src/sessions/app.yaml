@@ -1,0 +1,31 @@
+
+handlers:
+
+- url: /(.*\.(appcache|manifest))
+  mime_type: text/cache-manifest
+  static_files: sessions/static/\1
+  upload: sessions/static/(.*\.(appcache|manifest))
+  expiration: "0m"
+  
+- url: /(favicon\.ico|apple-touch-icon.*\.png)
+  mime_type: image/png
+  static_files: sessions/static/\1
+  upload: sessions/static/(favicon\.ico|apple-touch-icon.*\.png)
+
+- url: /(robots\.txt|humans\.txt|crossdomain\.xml)
+  static_files: sessions/static/\1
+  upload: sessions/static/(robots\.txt|humans\.txt|crossdomain\.xml)
+
+- url: /(img|css|js|swf)/(.*)
+  static_files: sessions/static/\1/\2
+  upload: sessions/static/(img|css|js|swf)/(.*)
+  
+- url: /(.*\.html)
+  mime_type: text/html
+  static_files: sessions/static/\1
+  upload: sessions/static/(.*\.html)
+    
+# dynamic Python app handlers
+- url: /auth.*|/logout
+  script: sessions.main.app
+

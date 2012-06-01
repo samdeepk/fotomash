@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Fotomash. Image Search</title>
+<link href="/static/css/fotomash.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/static/jquery/slidedeck.skin.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/static/css/scrollable.css" /> 
+<link rel="stylesheet" type="text/css" href="/static/css/buttons.css" /> 
+<script type="text/javascript" src="/static/jquery/jquery.min.js"></script>
+<script src="/static/script/jquery.tools.min.js"></script> 
+<script type="text/javascript" src="/static/jquery/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="/static/jquery/slidedeck.jquery.lite.js"></script>
+<!-------------------- color box style ----------------------------->
+<link media="screen" rel="stylesheet" href="/static/css/colorbox.css" />
+	<!-- script src="/static/jquery/jquery.colorbox.js"></script>
+    <script src="/static/jquery/scriptcolorbox.js"></script>-->
+    <script src="/static/script/scriptCentral.js"></script> 
+	
+<script type="text/javascript">
+
+$(document).ready(function(){
+	
+	$("#loginDIV").live("click",function(){loginArea.showLogin()})
+	$("#IdAdvanceSearch").live("click",function(){AdvanceSearch.show()})
+	$(".SrchBtn").live("click",function(){AdvanceSearch.search()})
+	$(".SrcBx").keyup(function(event){
+	    if(event.keyCode == 13){
+	    	AdvanceSearch.search()
+	    }
+	});
+})
+</script>
+</head>
+
+<body>
+<!-- --- image viewer after click on any image ---------------- -->
+	<div class="Headerbar">
+    	<div class="ContWrap">
+        	<div class="LogoSec"><a href="/"><img src="/static/images/fotomash-logo.png" width="218" height="61" alt="FotoMash" /></a></div>
+            <div class="HomeLogin">
+            	<div class="GuestName">{% if logged_in %}Welcome,&nbsp;<span>{{ user.name }}&nbsp;<a href='/logout'>Logout</a></span>  {% else %}&nbsp; <a href="JavaScript:void(0);" id="loginDIV" style="float:right;">Login</a> {%endif%}</div>
+                <div class="LoginLink">
+                <!-- -- login form popup--- -->
+                      
+                          
+              
+              <div class="LoginPop">
+                                <h1>Log in</h1>
+                                
+                            <p><strong>Login through your existing Account</strong></p>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="100px"><a href='/auth/facebook'><img src="/static/images/facebook.png" width="100" height="34" alt="Facebook" /> </a></td>
+                <td width="10px">&nbsp;</td>
+                <td width="100px"><a href='/auth/google'><img src="/static/images/google.png" width="100" height="34" /></a></td>
+                <td width="10px">&nbsp;</td>
+                <td><a style='display:none;' href='/auth/openid?identity_url=me.yahoo.com'><img src="/static/images/yahoo.png" width="100" height="34" alt="Yahoo" /></a></td>
+              </tr>
+              <tr>
+                <td width="100px"><a href='/auth/twitter'><img src="/static/images/twitter.png" width="100" height="34" alt="Facebook" /> </a></td>
+                <td width="10px">&nbsp;</td>
+                <td width="100px"><a href='/auth/linkedin'><img src="/static/images/linkedin.png" width="100" height="34" /></a></td>
+                <td width="10px">&nbsp;</td>
+                <td><a href='/auth/windows_live'><img src="/static/images/windowslive.png" width="100" height="34" alt="Yahoo" /></a></td>
+              </tr>
+            </table>
+            
+                
+            </div>
+            </div>
+      </div>
+    </div>
+    </div>
+    <div class="HomeCenBg">
+    	<div class="ContWrap">
+    		<div class='SrcRstDis'>
+    			<div class='result'></div>
+    		</div>
+        	<div class="HomeHero"></div>
+			<div class="HmSrchArea">
+					<div class="HmMnSrcBlc">
+						<div class="SrcBxCont">
+							<input name="" type="text" class="SrcBx" />
+							<div class="SrchBtn">
+								<a href="JavaScript:void(0);"><img src="/static/images/hmsrchbtn.png"
+									width="31" height="40" alt="Search" /></a>
+							</div>
+						</div>
+						<div class="AdvSrchHM">
+							<a href="JavaScript:void(0);" id="IdAdvanceSearch">Advanced Search</a>
+							
+						</div>
+					</div>
+					<!-- ----- advance search options popup----------- -->
+					<div class="AdvSrchOptions">
+						{% if logged_in %}<div class="AddKeyword">
+								<input name="SearchHistory" id="SearchHistory" type="checkbox" checked="checked" value="1" />
+								<p>Enable Search History</p>
+						</div>{%endif%}
+						<div class="SrcOpt">
+							<ul>
+								<li><input name="Bing" type="checkbox" value="" disabled="disabled"  />Bing</li>
+								<li><input name="Bing" type="checkbox" value="Yahoo" />Yahoo</li>
+								<li><input name="Bing" type="checkbox" value="google" />Google</li>
+								<li><input name="Bing" type="checkbox" value="" disabled="disabled" />Panaromio</li>
+								<li><input name="Bing" type="checkbox" value="photobucket" disabled="disabled" />PhotoBucket</li>
+								<li><input name="Bing" type="checkbox" value="flickr"  checked="checked"/>Flickr</li>
+								<li><input name="Bing" type="checkbox" value="Picasa" checked="checked"/>Picasa</li>
+								<li><input name="Bing" type="checkbox" value="ask" />Ask</li>
+							</ul>
+						</div>
+						<div class="AdvSrcDivider"></div>
+						
+						<div class="SrcCategory">
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td>By Categories</td>
+								</tr>
+								<tr>
+									<td><select name="select" id="categories">
+											<option value="">Select Category</option>
+											
+											<option value="Places">Places</option>
+											<option value="Photography">Photography</option>
+											<option value="Personality">Personality</option>
+											<option value="Fashion">Fashion</option>
+											<option value="News">News</option>
+											<option value="Movies">Movies</option>
+											<option value="Sports">Sports</option>
+											<option value="Nature">Nature</option>
+											<option value="Entertainment">Entertainment</option>
+											<option value="Brands">Brands</option>
+											
+									</select></td>
+								</tr>{% if logged_in %}
+								<tr>
+									<td>My Keywords</td>
+								</tr>
+								<tr>
+									<td><select name="select" id="keyWords" onchange="$('.SrcBx').val(this.value);AdvanceSearch.search();" >
+									<option value="">--select--</option>
+											{%for data in yourTopTrending %}<option value='{{data.keyWrd}}'>{{data.keyWrd}}</option>{%endfor%}
+									</select></td>
+								</tr>{%endif%}
+							</table>
+
+						</div>
+						
+					</div>
+				</div>
+		</div>
+			
+    </div>
+  
+    <div class="HomeBtmSlider">
+    	<div class="ContWrap"> 
+    	
+    	<br/>
+        	<a class="prevPage  left"></a> 
+            <!---- mouse hover popup----->
+          <div class="DivHover">
+           	<h1>Udaipur Lake Palace.jpg</h1>
+            <a href="#"> Wikimedia Commons</a>
+            <p>3044 x 2032 - 3244 kB </p>
+            </div>
+  <div class="scrollable">	
+  
+    <div class="items"> 
+      <!-- 1-4-->
+      {%for data in topTrending%}
+      	{%if data.topList %}<div><a href="{{data.topList.refURL}}"   target="_blank"   title="{{data.keyWrd}}"><img src="{{data.topList.imagePath}}" /><br/>{{data.keyWrd}} - {{data.topList.alt}} </a></div> {%endif%}
+      {%endfor%}
+      
+      
+      </div> 
+  </div> 
+  <a class="nextPage right"></a>
+        </div>
+    </div>
+    <div class="Footer">
+    	<div class="Copyrights"><a href="http://www.anonymousx.in/">Home</a> - <a href="http://www.anonymousx.in/team.html">About us</a> - <a href="mailto:anonymousxtrix@anonymousx.in">Help</a> - <a href="http://www.anonymousx.in/contactus.html">Contact us</a><br/><p>© 2012 FotoMash. All Rights Reserved.</p></div>
+        <div class="Social"><!-- <a href="#">Terms & Conditions</a> - <a href="#">Privacy Policy</a> - <a href="#">Disclaimer</a><br/> -->
+   	    <script src="https://apis.google.com/js/plusone.js"></script>
+
+<g:plusone href="https://plus.google.com/100539362555510409712"></g:plusone>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-like" data-href="https://www.facebook.com/Anonymousx.in" data-send="true" data-width="550" data-show-faces="false" style="float:left;"></div></div>
+    </div>
+    <script> 
+	$(function()  { $("div.scrollable").scrollable({size: 4}); });
+</script> 
+</body>
+</html>

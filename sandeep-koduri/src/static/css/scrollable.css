@@ -1,0 +1,95 @@
+.scrollable {
+	position: relative;
+	z-index:9;
+	overflow: hidden;
+	width: 900px;
+	height:120px;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+}
+
+.scrollable .items {
+	width: 20000em;
+	position: absolute;
+	clear: both;
+	background:none;
+}
+
+.scrollable div img {
+	float:left;
+	margin:5px 5px 6px 5px;
+	background-color:#fff;
+	cursor:pointer;
+	width:160px;
+	height:90px;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+}
+.scrollable div {
+	float:left;
+	background-color:#fff;
+	cursor:pointer;
+	width:170px;
+	height:120px;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	margin-right:10px;
+	text-align:center;
+	font-family:'verdana',Arial, Helvetica, sans-serif;
+	font-size:11px;
+	margin-right:10px;
+	color:black;
+}
+
+.scrollable .active {
+    opacity:1;
+	z-index:9999;
+	position:relative;
+}
+.DivHover
+{
+	background:url(../images/HmHoverBg.png) no-repeat;
+	width:160px;
+	height:65px;
+	position:absolute;
+	z-index:99;	
+	margin-top:-85px;
+	margin-left:400px;
+	padding:13px 15px 15px 15px;
+	display: none;
+}
+.DivHover h1
+{
+	font-size:11px;
+	font-weight:bold;
+	color:#F39;
+	margin-bottom:8px;
+}
+.DivHover a
+{
+	color:gray;
+	font-size:11px;
+	text-decoration:underline;
+	display:block;
+	margin-bottom:8px;
+}
+.DivHover a:hover
+{
+	color:gray;
+	text-decoration:none;
+}
+.DivHover p
+{
+	color:gray;
+	font-size:11px;
+}
+.scrollable a
+{
+	color:black;
+	text-decoration:none;
+}
+.scrollable a:hover
+{
+	color:#f42792;
+	text-decoration:none;
+}

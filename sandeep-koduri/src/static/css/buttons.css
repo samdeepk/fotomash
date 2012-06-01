@@ -1,0 +1,20 @@
+.scrollable { float:left; }
+
+a.left, a.right {
+	display: block;
+	width: 30px;
+	height: 55px;
+	float: left;
+	margin: 30px 10px;
+	cursor: pointer;
+}
+
+a.right { background: url(../images/right.png) no-repeat;  clear:right; margin-right: 0px;}
+a.right:hover  { background-position:0px -55px; }
+a.right:active 	{ background-position:0px 0px; } 
+
+a.left	{ background: url(../images/left.png) no-repeat;  margin-left: 0px; } 
+a.left:hover  { background-position:0px -55px; }
+a.left:active  { background-position:-0px 0px; }
+
+a.disabled { visibility:hidden !important; } 	
