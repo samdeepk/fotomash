@@ -50,7 +50,7 @@ resources ={
 		"google":{"refUrl":"http://www.google.co.in/search?tbm=isch&hl=en&source=hp&biw=1280&bih=699&q=%s&gbv=2&oq=&aq=0&aqi=g5g-m2g-S3&aql=&gs_l=img.3.0.0l5j0i5l2j0i24l3.1999.3688.0.4767.10.8.0.2.2.0.144.776.3j5.8.0...0.0.kzNmYXEyt2Q",'linkSourceDomain':"http://www.google.co.in",'linkRules':{"node":"a","attr":"href"},"rules":["td"],"keyRules":{"style":"width:25%;word-wrap:break-word"},"node":"img","attr":"src"},
 
 }
-
+#
 class MainHandler(BaseRequestHandler):
 	def post(self):
 		if self.logged_in:
