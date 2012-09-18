@@ -40,14 +40,14 @@ from secrets import app_config
 
 resources ={
 		
-		"Yahoo":{"refUrl":"http://images.search.yahoo.com/search/images;_ylt=A0PDoTD7Oa5PSzIA7CaLuLkF?fr2=sg-gac-sy&p=%s&ei=utf-8&iscqry=&fr=sfp",'linkSourceDomain':"http://images.search.yahoo.com",'linkRules':{"node":"a","attr":"href"},"rules":["li","ld"],"keyRules":{},"node":"img","attr":"src"},
-		"Picasa":{"refUrl":"https://picasaweb.google.com/data/feed/api/all?q=%s&max-results=30",'linkSourceDomain':"","rules":["entry"],'linkRules':{"node":"link","attr":"href","keyRules":{"type":'text/html'}},"keyRules":{},"node":"media:thumbnail","attr":"url"},
-		"flickr":{"refUrl":"http://www.flickr.com/search/?q=%s&f=hp",'linkSourceDomain':"http://www.flickr.com","rules":["span","photo_container"],'linkRules':{"node":"a","attr":"href"},"keyRules":{},"node":"img","attr":"src"},
-		#"gettyimages":{"refUrl":"http://www.gettyimages.in/Search/Search.aspx?contractUrl=2&language=en-GB&family=editorial&assetType=image&ep=3&mt=photography&p=%s","rules":["div","imgInner"],"keyRules":{},"node":"img","attr":"src"},
-		"fotosearch":{"refUrl":"http://www.fotosearch.com/photos-images/%s.html",'linkSourceDomain':"http://www.fotosearch.com","rules":["div","ori"],'linkRules':{"node":"a","attr":"href"},"keyRules":{},"node":"img","attr":"src"},
-		"ask":{"refUrl":"http://www.ask.com/pictures?qsrc=1&o=102140&l=dir&q=%s",'linkSourceDomain':"","rules":["div","rowresult"],'linkRules':{"node":"a","attr":"href"},"keyRules":{},"node":"img","attr":"src"},
-		"photobucket":{"refUrl":"http://photobucket.com/images/%s/",'linkSourceDomain':"","rules":["div","thumbnail"],'linkRules':{"node":"a","attr":"href"},"keyRules":{},"node":"img","attr":"src"},
-		"google":{"refUrl":"http://www.google.co.in/search?tbm=isch&hl=en&source=hp&biw=1280&bih=699&q=%s&gbv=2&oq=&aq=0&aqi=g5g-m2g-S3&aql=&gs_l=img.3.0.0l5j0i5l2j0i24l3.1999.3688.0.4767.10.8.0.2.2.0.144.776.3j5.8.0...0.0.kzNmYXEyt2Q",'linkSourceDomain':"http://www.google.co.in",'linkRules':{"node":"a","attr":"href"},"rules":["td"],"keyRules":{"style":"width:25%;word-wrap:break-word"},"node":"img","attr":"src"},
+		"groupON":{"refUrl":"http://www.groupon.com/%s/all",'linkSourceDomain':"",'linkRules':{"node":"a","attr":"href"},"rules":["div","deal"],"keyRules":{},"node":"img","attr":"src"},
+#		"Picasa":{"refUrl":"https://picasaweb.google.com/data/feed/api/all?q=%s&max-results=30",'linkSourceDomain':"","rules":["entry"],'linkRules':{"node":"link","attr":"href","keyRules":{"type":'text/html'}},"keyRules":{},"node":"media:thumbnail","attr":"url"},
+#		"flickr":{"refUrl":"http://www.flickr.com/search/?q=%s&f=hp",'linkSourceDomain':"http://www.flickr.com","rules":["span","photo_container"],'linkRules':{"node":"a","attr":"href"},"keyRules":{},"node":"img","attr":"src"},
+#		#"gettyimages":{"refUrl":"http://www.gettyimages.in/Search/Search.aspx?contractUrl=2&language=en-GB&family=editorial&assetType=image&ep=3&mt=photography&p=%s","rules":["div","imgInner"],"keyRules":{},"node":"img","attr":"src"},
+#		"fotosearch":{"refUrl":"http://www.fotosearch.com/photos-images/%s.html",'linkSourceDomain':"http://www.fotosearch.com","rules":["div","ori"],'linkRules':{"node":"a","attr":"href"},"keyRules":{},"node":"img","attr":"src"},
+#		"ask":{"refUrl":"http://www.ask.com/pictures?qsrc=1&o=102140&l=dir&q=%s",'linkSourceDomain':"","rules":["div","rowresult"],'linkRules':{"node":"a","attr":"href"},"keyRules":{},"node":"img","attr":"src"},
+#		"photobucket":{"refUrl":"http://photobucket.com/images/%s/",'linkSourceDomain':"","rules":["div","thumbnail"],'linkRules':{"node":"a","attr":"href"},"keyRules":{},"node":"img","attr":"src"},
+#		"google":{"refUrl":"http://www.google.co.in/search?tbm=isch&hl=en&source=hp&biw=1280&bih=699&q=%s&gbv=2&oq=&aq=0&aqi=g5g-m2g-S3&aql=&gs_l=img.3.0.0l5j0i5l2j0i24l3.1999.3688.0.4767.10.8.0.2.2.0.144.776.3j5.8.0...0.0.kzNmYXEyt2Q",'linkSourceDomain':"http://www.google.co.in",'linkRules':{"node":"a","attr":"href"},"rules":["td"],"keyRules":{"style":"width:25%;word-wrap:break-word"},"node":"img","attr":"src"},
 
 }
 #
@@ -59,6 +59,7 @@ class MainHandler(BaseRequestHandler):
 #		sites=self.request.get_all("domains")
 		sites=self.request.get("domains")
 		keyWord= self.request.get("keyword")+('+"'+self.request.get("categories")+'"' if self.request.get("categories") else "")
+		keyWord = keyWord.replace(":","/area/")
 		imagesList =[]
 #		for domain in sites:
 		if sites:
@@ -104,7 +105,9 @@ class MainHandler(BaseRequestHandler):
 										dataHolder['refURL'] = resources[domain]['linkSourceDomain']+value
 							
 						
-						nodeX = link.find(resources[domain]['node'])
+						nodeX = link
+						
+						nodeX = nodeX.find(resources[domain]['node'])
 						if nodeX:
 							for attr, value in nodeX.attrs:
 								if attr==resources[domain]['attr']:
@@ -112,7 +115,27 @@ class MainHandler(BaseRequestHandler):
 								if attr=='alt' and value:
 									dataHolder['alt'] = value
 						
+						#print link
+						nodeX = link.find('div','extended_info')
 						
+						
+						if nodeX:
+							#print nodeX.contents,nodeX.string,nodeX.html
+							nodeY = nodeX
+							nodeY = nodeY.find('a','deal_tile_foreground')
+							dataHolder['title'] = nodeY.string.strip()
+						
+						else:
+							nodeX = link.find('div','title')
+						
+						
+							if nodeX:
+								#print nodeX.contents,nodeX.string,nodeX.html
+								nodeY = nodeX
+								nodeY = nodeY.find('a')
+								dataHolder['title'] = nodeY.string.strip()
+								
+							
 						if dataHolder['imagePath']:imagesList.append(dataHolder)
 #									self.response.out.write( "<img src='%s' style='max-height:200px;'/>"%(value) +domain)
 							#print link.find("img"),"stupi"
@@ -120,7 +143,7 @@ class MainHandler(BaseRequestHandler):
 #					for row in xx.soup('li', {'class' : 'ld'}):
 #					  tds = row('img')
 #					  print tds[0].string, tds[1].string
-		self.response.out.write(json.dumps({"images":imagesList,'source':sites}))
+		self.response.out.write(json.dumps({"results":imagesList,'source':sites}))
 #					pass#self.perocessData(siteData.content)
 	def perocessData(self,searchData="",domainInfo=""):
 		self.response.out.write(searchData)
@@ -140,7 +163,9 @@ class RootHandler(BaseRequestHandler):
 		Cuser["topTrending"]=[{'rowOBJ':itm,'keyWrd':itm.key().id_or_name(),"tags": itm.tags,"hits":itm.hits, "topList":(json.loads(itm.topList)[0] if len(json.loads(itm.topList))>0 else {})} for itm in  topTrending]
 		self.render('index.html',Cuser)
 		
-		
+class RootHandlergroupOn(BaseRequestHandler):
+	def get(self):
+		self.render('groupOn.html',{})
 class udateSearchHistory(BaseRequestHandler):
 	def post(self):
 		"""Handles default langing page"""
@@ -162,7 +187,7 @@ class udateSearchHistory(BaseRequestHandler):
 
 app_config["webapp2_extras.jinja2.default_config"] = {'template_path':"templates"}
 app = webapp2.WSGIApplication([
-							('/', RootHandler),
+							('/', RootHandlergroupOn),
 							('/search', MainHandler),
 							('/searchTrack', udateSearchHistory)
 							],config=app_config,

@@ -1,5 +1,5 @@
-application: sandeep-koduri
-version: v1-4
+application: groupon-test
+version: groupon-test
 runtime: python27
 api_version: 1
 threadsafe: no

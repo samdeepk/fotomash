@@ -15,8 +15,7 @@ indexes:
   - name: hits
     direction: desc
   - name: updatedOn
-  
-  
+
 - kind: usersSearchs
   properties:
   - name: userKey

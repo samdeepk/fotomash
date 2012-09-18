@@ -93,11 +93,11 @@ AdvanceSearch={
 				  success: function(data) {
 					  		//console.log(data)
 					  		
-					  		$.each(data['images'], function(index, value) { 
+					  		$.each(data['results'], function(index, value) { 
 							  AdvanceSearch.populateSearchArea(value,sata['keyword'],data["source"],index)
 							});
 					  		AdvanceSearch.searchListCountFetched = AdvanceSearch.searchListCountFetched+1
-					  		if(data['images'].length>0){ AdvanceSearch.topSearchList.push(data['images'][0])}
+					  		if(data['results'].length>0){ AdvanceSearch.topSearchList.push(data['results'][0])}
 					  		if(AdvanceSearch.searchListCountFetched == AdvanceSearch.searchListCount )
 					  			{
 					  				AdvanceSearch.updateUserSearchHistory(keyWord,AdvanceSearch.topSearchList)
@@ -116,7 +116,7 @@ AdvanceSearch={
 		},
 		populateSearchArea:function(img,keyword,domain,index){
 			
-			Indata = '<div class="order'+index+'"><a target="_blank" href="'+img['refURL']+'" rel="example1" title="" class="cboxElement"><img src="'+img['imagePath']+'"><br>'+img['alt'].slice(0,20)+' - '+domain+' </a></div>'
+			Indata = '<div class="order'+index+' res"><div class="testIt"></div><a target="_blank" href="'+img['refURL']+'" rel="example1" title="" class="cboxElement">'+img['title']+'<img src="'+img['imagePath']+'"><br> </a></div>'
 			inrows = $(".order"+index)
 			if(inrows.length>0){
 				$(".order"+index+":last").after(Indata)

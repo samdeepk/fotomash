@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Fotomash. Image Search</title>
+<script type="text/javascript" src="/static/jquery/jquery.min.js"></script>
+    <script src="/static/script/scriptCentral.js"></script> 
+
+	
+<script type="text/javascript">
+
+$(document).ready(function(){
+	
+	$("#loginDIV").live("click",function(){loginArea.showLogin()})
+	$("#IdAdvanceSearch").live("click",function(){AdvanceSearch.show()})
+	$(".SrcBx").live("change",function(){AdvanceSearch.search()})
+	$(".SrcBx").keyup(function(event){
+	    if(event.keyCode == 13){
+	    	AdvanceSearch.search()
+	    }
+	});
+})
+</script>
+
+<style >
+.SrcRstDis img{vertical-align: middle;
+height: 70px;
+}
+.SrcRstDis  .res{
+height: 70px;
+border-bottom: 1px solid gray;
+}
+.SrcRstDis  .res div  {
+height: 100%;
+border-right: 1px solid gray;
+
+}
+</style>
+</head>
+
+<body>
+<div class="SrcOpt">
+<input name="Bing" type="checkbox" checked="checked" value="groupON" style="display:none" />
+</div>
+
+
+
+ <select data-bhw='DivisionSelector' class='SrcBx' id='subscription_division_id' name='subscription[division_id]' style='width: 170px;'>
+                          <option value='abbotsford'>Abbotsford</option>
+                          <option value='abilene'>Abilene, TX</option>
+                          <option value='akron-canton'>Akron / Canton</option>
+                          <option value='albany-capital-region'>Albany / Capital Region</option>
+                          <option value='albuquerque'>Albuquerque</option>
+                          <option value='allentown-reading'>Allentown / Reading</option>
+                          <option value='amarillo'>Amarillo</option>
+                          <option value='anchorage'>Anchorage</option>
+                          <option value='ann-arbor'>Ann Arbor</option>
+                          <option value='asheville'>Asheville</option>
+                          <option value='athens-ga'>Athens, GA</option>
+                          <option value='atlanta'>Atlanta</option>
+                          <option value='augusta'>Augusta</option>
+                          <option value='austin'>Austin</option>
+                          <option value='bakersfield'>Bakersfield</option>
+                          <option value='baltimore'>Baltimore</option>
+                          <option value='barrie'>Barrie</option>
+                          <option value='baton-rouge'>Baton Rouge</option>
+                          <option value='beaumont'>Beaumont, TX</option>
+                          <option value='billings'>Billings / Bozeman</option>
+                          <option value='birmingham'>Birmingham</option>
+                          <option value='bloomington-in'>Bloomington, IN</option>
+                          <option value='boise'>Boise</option>
+                          <option value='boston'>Boston</option>
+                          <option value='buffalo'>Buffalo</option>
+                          <option value='calgary'>Calgary</option>
+                          <option value='cape-breton'>Cape Breton</option>
+                          <option value='cedar-rapids-iowa-city'>Cedar Rapids / Iowa City</option>
+                          <option value='central-jersey'>Central Jersey</option>
+                          <option value='charleston'>Charleston</option>
+                          <option value='charleston-wv'>Charleston, WV</option>
+                          <option value='charlotte'>Charlotte</option>
+                          <option value='chattanooga'>Chattanooga</option>
+                          <option value='chicago'>Chicago</option>
+                          <option value='cincinnati'>Cincinnati</option>
+                          <option value='cleveland'>Cleveland</option>
+                          <option value='colorado-springs'>Colorado Springs</option>
+                          <option value='columbia'>Columbia</option>
+                          <option value='columbia-mo'>Columbia, MO</option>
+                          <option value='columbus'>Columbus</option>
+                          <option value='columbus-ga'>Columbus GA</option>
+                          <option value='corpus-christi'>Corpus Christi</option>
+                          <option value='dallas'>Dallas</option>
+                          <option value='dayton'>Dayton</option>
+                          <option value='daytona-beach'>Daytona Beach</option>
+                          <option value='denver'>Denver</option>
+                          <option value='des-moines'>Des Moines</option>
+                          <option value='detroit'>Detroit</option>
+                          <option value='edmonton'>Edmonton</option>
+                          <option value='el-paso'>El Paso</option>
+                          <option value='erie'>Erie</option>
+                          <option value='eugene'>Eugene</option>
+                          <option value='evansville'>Evansville</option>
+                          <option value='fairfield-county'>Fairfield County</option>
+                          <option value='fort-lauderdale'>Fort Lauderdale</option>
+                          <option value='fort-myers-cape-coral'>Fort Myers / Cape Coral</option>
+                          <option value='fort-wayne'>Fort Wayne</option>
+                          <option value='fort-worth'>Fort Worth</option>
+                          <option value='appleton'>Fox Cities</option>
+                          <option value='fresno'>Fresno</option>
+                          <option value='gainesville'>Gainesville</option>
+                          <option value='grand-rapids'>Grand Rapids</option>
+                          <option value='green-bay'>Green Bay</option>
+                          <option value='greenville'>Greenville</option>
+                          <option value='halifax'>Halifax</option>
+                          <option value='hampton-roads'>Hampton Roads</option>
+                          <option value='harrisburg'>Harrisburg / Lancaster</option>
+                          <option value='hartford'>Hartford</option>
+                          <option value='honolulu'>Honolulu</option>
+                          <option value='houston'>Houston</option>
+                          <option value='huntsville'>Huntsville</option>
+                          <option value='indianapolis'>Indianapolis</option>
+                          <option value='inland-empire'>Inland Empire</option>
+                          <option value='jackson'>Jackson</option>
+                          <option value='jacksonville'>Jacksonville</option>
+                          <option value='kalamazoo'>Kalamazoo</option>
+                          <option value='kansas-city'>Kansas City</option>
+                          <option value='kelowna'>Kelowna</option>
+                          <option value='kingston'>Kingston / Belleville</option>
+                          <option value='kitchener-waterloo'>Kitchener - Waterloo</option>
+                          <option value='knoxville'>Knoxville</option>
+                          <option value='lakeland'>Lakeland</option>
+                          <option value='lansing'>Lansing</option>
+                          <option value='las-vegas'>Las Vegas</option>
+                          <option value='lexington'>Lexington</option>
+                          <option value='lincoln'>Lincoln</option>
+                          <option value='little-rock'>Little Rock</option>
+                          <option value='london'>London, ON</option>
+                          <option value='long-island'>Long Island</option>
+                          <optgroup label='Los Angeles'>
+                            <option value='los-angeles:los-angeles'>Los Angeles</option>
+                            <option value='los-angeles:san-gabriel-valley'>San Gabriel Valley</option>
+                            <option value='los-angeles:san-fernando-valley'>San Fernando Valley</option>
+                          </optgroup>
+                          <option value='louisville'>Louisville</option>
+                          <option value='lubbock'>Lubbock</option>
+                          <option value='macon'>Macon</option>
+                          <option value='madison'>Madison</option>
+                          <option value='memphis'>Memphis</option>
+                          <option value='miami'>Miami</option>
+                          <option value='midland-odessa'>Midland / Odessa</option>
+                          <option value='milwaukee'>Milwaukee</option>
+                          <option value='minneapolis-stpaul'>Minneapolis / St Paul</option>
+                          <option value='mobile-baldwin-county'>Mobile / Baldwin County</option>
+                          <option value='modesto'>Modesto</option>
+                          <option value='montgomery'>Montgomery</option>
+                          <option value='napa-sonoma'>Napa / Sonoma</option>
+                          <option value='naples'>Naples</option>
+                          <option value='nashville'>Nashville</option>
+                          <option value='new-orleans'>New Orleans</option>
+                          <option value='new-york'>New York City</option>
+                          <option value='north-jersey'>North Jersey</option>
+                          <option value='ocala'>Ocala</option>
+                          <option value='ogden'>Ogden</option>
+                          <option value='oklahoma-city'>Oklahoma City</option>
+                          <option value='omaha'>Omaha</option>
+                          <option value='orange-county'>Orange County</option>
+                          <option value='orlando'>Orlando</option>
+                          <option value='ottawa'>Ottawa</option>
+                          <option value='palm-beach'>Palm Beach</option>
+                          <option value='pensacola'>Pensacola / Emerald Coast</option>
+                          <option value='philadelphia'>Philadelphia</option>
+                          <option value='phoenix'>Phoenix</option>
+                          <option value='piedmont-triad'>Piedmont Triad</option>
+                          <option value='pittsburgh'>Pittsburgh</option>
+                          <option value='portland'>Portland</option>
+                          <option value='portland-me'>Portland, ME</option>
+                          <option value='providence'>Providence</option>
+                          <option value='raleigh-durham'>Raleigh / Durham</option>
+                          <option value='regina'>Regina</option>
+                          <option value='reno'>Reno</option>
+                          <option value='richmond'>Richmond</option>
+                          <option value='rio-grande-valley'>Rio Grande Valley</option>
+                          <option value='roanoke'>Roanoke</option>
+                          <option value='rochester'>Rochester</option>
+                          <option value='rockford'>Rockford</option>
+                          <option value='sacramento'>Sacramento</option>
+                          <option value='salem-or'>Salem OR</option>
+                          <option value='salt-lake-city'>Salt Lake City</option>
+                          <option value='san-angelo'>San Angelo</option>
+                          <option value='san-antonio'>San Antonio</option>
+                          <option value='san-diego'>San Diego</option>
+                          <optgroup label='San Francisco'>
+                            <option value='san-francisco:san-francisco'>San Francisco</option>
+                            <option value='san-francisco:east-bay'>East Bay</option>
+                          </optgroup>
+                          <option value='san-jose'>San Jose</option>
+                          <option value='santa-barbara'>Santa Barbara</option>
+                          <option value='santa-clarita'>Santa Clarita</option>
+                          <option value='santa-cruz'>Santa Cruz / Monterey</option>
+                          <option value='saskatoon'>Saskatoon</option>
+                          <option value='savannah-hilton-head'>Savannah / Hilton Head</option>
+                          <optgroup label='Seattle'>
+                            <option value='seattle:tacoma'>Tacoma</option>
+                            <option value='seattle:seattle'>Seattle</option>
+                          </optgroup>
+                          <option value='shreveport-bossier'>Shreveport / Bossier</option>
+                          <option value='sioux-falls'>Sioux Falls</option>
+                          <option value='south-bend'>South Bend</option>
+                          <option value='albany-ga'>Southern Georgia</option>
+                          <option value='spokane-coeur-dalene'>Spokane / Coeur d'Alene</option>
+                          <option value='springfield-mo'>Springfield MO</option>
+                          <option value='springfield-ma'>Springfield, MA</option>
+                          <option value='stcatharines-niagara'>St Catharines-Niagara</option>
+                          <option value='st-johns'>St John's</option>
+                          <option value='stlouis'>St Louis</option>
+                          <option value='stockton'>Stockton</option>
+                          <option value='sudbury'>Sudbury / North Bay</option>
+                          <option value='syracuse'>Syracuse</option>
+                          <option value='tallahassee'>Tallahassee</option>
+                          <option value='tampa-bay-area'>Tampa Bay Area</option>
+                          <option value='toledo'>Toledo</option>
+                          <option value='topeka-lawrence'>Topeka / Lawrence</option>
+                          <option value='greater-toronto-area'>Toronto (GTA)</option>
+                          <option selected='selected' value='tucson'>Tucson</option>
+                          <option value='tulsa'>Tulsa</option>
+                          <option value='vancouver'>Vancouver</option>
+                          <option value='ventura-county'>Ventura County</option>
+                          <option value='victoria'>Victoria</option>
+                          <optgroup label='Washington DC'>
+                            <option value='washington-dc:dc-metro'>The District</option>
+                            <option value='washington-dc:northern-virginia'>Northern Virginia</option>
+                            <option value='washington-dc:montgomery-county'>Montgomery County</option>
+                          </optgroup>
+                          <option value='westchester-county'>Westchester County</option>
+                          <option value='wichita'>Wichita</option>
+                          <option value='wilmington-newark'>Wilmington-Newark</option>
+                          <option value='windsor'>Windsor</option>
+                          <option value='winnipeg'>Winnipeg</option>
+                          <option value='worcester'>Worcester</option>
+                          <option value='youngstown'>Youngstown</option>
+                        </select>
+    <div class='SrcRstDis'>
+    	<div class='result'>
+    	
+    	</div>
+    </div>                    
+                        
+</body>
+</html>
